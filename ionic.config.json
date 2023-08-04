@@ -1,0 +1,7 @@
+{
+  "name": "ComunidadJ",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
