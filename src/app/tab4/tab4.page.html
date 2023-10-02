@@ -1,0 +1,17 @@
+<ion-content [fullscreen]="true">
+
+    <ion-item *ngFor="let circular of circulares">
+        <ion-col size="2">
+          <ion-avatar item-start>
+            <img src="{{circular.url_logo}}" style="width: 80%;">
+          </ion-avatar>
+        </ion-col>
+        <label class="{{circular.clase}}">
+          <p style="margin-bottom: -9px;"> {{circular.created_at}} </p>
+          <p style="margin-bottom: -9px;"> {{circular.message}} </p>
+          <p> {{circular.categoria}} </p>
+        </label>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+  </ion-item>
+
+</ion-content>

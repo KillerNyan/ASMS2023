@@ -1,20 +1,102 @@
 <ion-tabs>
 
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button menu="menuId" class="icon-menu"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-menu side="start" menuId="menuId" contentId="main" mode="md">
+    <ion-header>
+      <ion-toolbar class="menu">
+        <img src="../../../assets/img/user.jpg" width="60%" slot="start" class="img">
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="menu-content">
+      <ion-menu-toggle>
+        <ion-list>
+          <ion-menu-toggle>
+            <ion-item routerLink="/">
+              <ion-icon name="home" slot="start"></ion-icon>
+              <ion-label>Inicio</ion-label>
+            </ion-item>
+            <ion-item routerLink="/pages/perfil">
+              <ion-icon name="people" slot="start"></ion-icon>
+              <ion-label>Perfil</ion-label>
+            </ion-item>
+            <ion-item routerLink="/">
+              <ion-icon name="checkbox-outline" slot="start"></ion-icon>
+              <ion-label>Encuestas</ion-label>
+            </ion-item>
+            <ion-item (click)="actividadesPage()">
+              <ion-icon name="calendar-outline" slot="start"></ion-icon>
+              <ion-label>Actividades</ion-label>
+            </ion-item>
+            <ion-item routerLink="/security">
+              <ion-icon name="construct-outline" slot="start"></ion-icon>
+              <ion-label>Soporte tecnico</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-menu-toggle>
+    </ion-content>
+    <ion-footer>
+      <ion-menu-toggle>
+        <ion-toolbar>
+          <ion-buttons slot="end" mode="ios" class="item-padding-salir">
+            <ion-button color="dark" (click)="logOut()">
+              <ion-icon slot="start" name="power-outline" class="icon-menu"></ion-icon>
+              <ion-note>Salir</ion-note>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-menu-toggle>
+    </ion-footer>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="tab1">
-      <ion-icon aria-hidden="true" name="triangle"></ion-icon>
-      <ion-label>Tab 1</ion-label>
+      <ion-icon aria-hidden="true" name="notifications"></ion-icon>
+      <ion-label>Notificaciones</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="tab2">
-      <ion-icon aria-hidden="true" name="ellipse"></ion-icon>
-      <ion-label>Tab 2</ion-label>
+      <ion-icon aria-hidden="true" name="images"></ion-icon>
+      <ion-label>Multimedia</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="tab3">
-      <ion-icon aria-hidden="true" name="square"></ion-icon>
-      <ion-label>Tab 3</ion-label>
+      <ion-icon aria-hidden="true" name="pin"></ion-icon>
+      <ion-label>Pinboard</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tab4">
+      <ion-icon aria-hidden="true" name="document-text"></ion-icon>
+      <ion-label>Circulares</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" style="margin-bottom: 60px;">
+    <ion-fab-button size="medium">
+      <ion-icon style="zoom: 1.2;" name="chevron-up-circle-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button style="width: 50px; height: 50px;">
+        <ion-icon name="calendar-outline" style="zoom: 1.5;" color="primary"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button style="width: 50px; height: 50px;">
+        <ion-icon name="people-outline" style="zoom: 1.5;" color="primary"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button style="width: 50px; height: 50px;">
+        <ion-icon name="chatbubbles-outline" style="zoom: 1.5;" color="primary"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button style="width: 50px; height: 50px;" (click)="perfilPage()">
+        <ion-icon name="people" style="zoom: 1.5;" color="primary"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 
 </ion-tabs>

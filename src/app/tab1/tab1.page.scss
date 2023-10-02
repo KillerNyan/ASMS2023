@@ -1,0 +1,31 @@
+/* Estilo para los elementos de notificación */
+ion-item {
+    background-color: #f5f5f5; /* Cambia el color de fondo según tu preferencia */
+    border-bottom: 1px solid #ddd; /* Línea divisoria entre elementos */
+    padding: 10px; /* Espaciado interior */
+    border-radius: 10px;
+  }
+  
+  /* Estilo para el avatar */
+  ion-avatar img {
+    border-radius: 50%; /* Para hacer que la imagen del avatar sea circular */
+    width: 40px; /* Tamaño del avatar */
+    height: 40px;
+  }
+  
+  /* Estilo para la etiqueta de notificación */
+  label {
+    display: block; /* Asegura que cada línea de texto esté en su propia línea */
+    font-weight: bold; /* Texto en negrita */
+  }
+  
+  /* Estilo para las notificaciones no leídas */
+  .label-no-leida {
+    color: #ff0000; /* Color de texto para notificaciones no leídas (rojo) */
+  }
+  
+  /* Estilo para el icono de flecha */
+  ion-icon[name="arrow-forward"] {
+    color: #007bff; /* Cambia el color de la flecha según tu preferencia */
+  }
+  

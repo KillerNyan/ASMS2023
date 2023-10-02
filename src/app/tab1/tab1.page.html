@@ -1,17 +1,17 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+  <ion-item *ngFor="let notificacion of notificaciones">
+        <ion-col size="2">
+          <ion-avatar item-start>
+            <img src="{{notificacion.url_logo}}">
+          </ion-avatar>
+        </ion-col>
+        <label class="{{notificacion.clase}}">
+          <p style="margin-bottom: -9px;"> {{notificacion.created_at}} </p>
+          <p style="margin-bottom: -9px;"> {{notificacion.message}} </p>
+          <p> {{notificacion.categoria}} </p>
+        </label>
+        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+  </ion-item>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
 </ion-content>
