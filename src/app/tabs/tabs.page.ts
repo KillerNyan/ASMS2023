@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 
 @Component({
@@ -9,7 +10,7 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class TabsPage {
 
-  constructor(private router: Router, private storage: Storage) {}
+  constructor(private router: Router, private storage: Storage, public loadingController: LoadingController) {}
 
   async logOut(){
     this.router.navigateByUrl('/login');
@@ -22,8 +23,16 @@ export class TabsPage {
     this.router.navigateByUrl('/perfil');
   }
 
-  actividadesPage(){
+  async actividadesPage(){
+    await this.presentLoading();
     this.router.navigateByUrl('/actividades');
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Cargando...'
+    });
+    await loading.present();
   }
 
 }

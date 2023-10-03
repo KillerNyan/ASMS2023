@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { LoadingController, ModalController, Platform } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-actividad',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActividadPage implements OnInit {
 
-  constructor() { }
+  @Input() actividad: any;
+  @Input() imagen: any;
+  viewEntered: any;
+
+  constructor(private modalController: ModalController, private loadingController: LoadingController, private platform: Platform) { }
+
+  ionViewDidEnter() {
+    this.viewEntered = true;
+    this.loadingController.dismiss();
+  }
+
+  ionViewWillLeave(){
+    this.viewEntered = false;
+  }
 
   ngOnInit() {
+  }
+
+  back(){
+    this.platform.backButton.subscribeWithPriority(10, () => {
+      this.modalController.dismiss();
+    });
+    this.modalController.dismiss();
   }
 
 }

@@ -1,13 +1,23 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>actividad</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="back()" color="primary">
+        <ion-icon slot="end" name="close-circle-outline" color="primary" style="zoom: 1.5;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">actividad</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-card ion-fixed>
+    <img alt="" src={{imagen}} />
+    <ion-card-header>
+      <ion-card-title>{{actividad.titulo}}</ion-card-title>
+      <ion-card-subtitle>{{actividad.fecha_inicio}} {{actividad.hora_inicio}} - {{actividad.fecha_final}} {{actividad.hora_final}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{actividad.descripcion}}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

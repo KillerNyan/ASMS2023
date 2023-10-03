@@ -12,6 +12,7 @@ export class AsmsServiceService {
 
   data = null;
   datosUsuario: any;
+  datosActividad: any;
 
   constructor(private http: HttpClient, private storage: Storage) {
     this.storage.create();
@@ -24,6 +25,7 @@ export class AsmsServiceService {
   }
 
   async getActividad<T>(codigo: any){
+    this.datosActividad = await this.storage.get('datos');
     return this.http.get<T>(`${asmsURL}API_gestor_actividades.php?request=actividad&codigo=${codigo}`);
   }
 }
