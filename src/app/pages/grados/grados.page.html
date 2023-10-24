@@ -1,60 +1,9 @@
-<ion-header id="main">
-  <ion-toolbar color="primary">
-
-    <ion-buttons slot="start">
-      <ion-menu-button menu="menu" class="icon-menu"></ion-menu-button>
-    </ion-buttons>
-
-    <ion-title class="ion-text-capitalize"> sec </ion-title>
-
-  </ion-toolbar>
-</ion-header>
-
-<ion-menu side="start" menuId="menu" contentId="main" mode="md">
-<ion-header>
-  <ion-toolbar class="menu" color="primary">
-    <ion-title class="ion-text-center"> MENÚ </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="menu-content">
-  <ion-item>
-    <img src="../../../assets/img/user.jpg" width="60%" slot="start" class="img">
-  </ion-item>
-  <ion-menu-toggle *ngFor="let c of componentes">
-    <ion-list>
-      <ion-item (click)="navegar( c.redirectTo )">
-        <ion-icon [name]="c.icon" slot="start" color="primary"></ion-icon>
-        <ion-label color="primary">{{ c.name }}</ion-label>
-      </ion-item>
-    </ion-list>
-  </ion-menu-toggle>
-</ion-content>
-
-<ion-footer>
-  <ion-menu-toggle>
-    <ion-toolbar>
-      <ion-buttons slot="end" mode="ios" class="item-padding-salir">
-        <ion-button color="dark" (click)="logOut()">
-          <ion-icon slot="start" name="power-outline" class="icon-menu"></ion-icon>
-          <ion-note>Salir</ion-note>
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-menu-toggle>
-</ion-footer>
-</ion-menu>
-
-
+<app-header titulo="secciones (alumnos)"></app-header>
 
 <ion-content class="ion-padding">
 
   <ion-card *ngFor="let seccion of secciones">
     <ion-card-title color="light"> {{ seccion.grado_descripcion }} Seccion: {{ seccion.seccion_descripcion }} </ion-card-title>
   </ion-card>
-
-  <ion-button (click)="onClick()" expand="block">
-    Click me
-  </ion-button>
 
 </ion-content>

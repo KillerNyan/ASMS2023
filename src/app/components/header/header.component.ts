@@ -11,18 +11,27 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HeaderComponent {
 
-  
+  componentes: any[] = [];
   
   constructor( private router: Router, private storage: Storage, private userSrvc: UserService, private navCtrl: NavController, private menuCtrl: MenuController ) {}
 
   @Input() titulo: string = '';
 
   async ngOnInit() {
-    
+    (await this.userSrvc.getMenuOpts()).subscribe( (componentes: any) => {
+      this.componentes = componentes;
+    })
   }
 
-  
+  async logOut(){
+    this.navCtrl.navigateRoot('/login');
+    this.storage.remove('datos');
+    this.storage.remove('ordenes');
+    this.storage.clear();
+  }
 
-
+  navegar(ruta: any) {
+    this.navCtrl.navigateRoot(ruta);
+  }
 
 }
