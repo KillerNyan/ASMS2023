@@ -1,0 +1,11 @@
+<app-header titulo="circulares"></app-header>
+
+<ion-content class="ion-padding">
+  
+  <ion-card *ngFor="let circular of circulares" (click)="abrirCircular()">
+    <ion-card-title class="ion-padding-horizontal"> {{ circular.fecha_publicacion }} {{ circular.hora_publicacion }} </ion-card-title>
+    <ion-card-subtitle class="ion-padding-horizontal"> {{ circular.titulo }} </ion-card-subtitle>
+    <ion-card-subtitle class="ion-padding-horizontal"> {{ circular.descripcion }} </ion-card-subtitle>
+  </ion-card>  
+
+</ion-content>

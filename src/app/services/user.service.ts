@@ -12,17 +12,19 @@ const ajustesUrl = environment.loginUrl;
 export class UserService {
 
   data = null;
+  tipoUsuario: any;
   datosUsuario: any;
 
   constructor( private http: HttpClient, private storage: Storage ) {
     this.storage.create();
    }
 
-  login<T>( usu: any, password: any){
+  login<T>( usu: any, password: any ){
     return new Promise (resolve => {
       this.http.get(`${loginUrl}login&usu=${usu}&pass=${password}`).subscribe(async (resp: any) => {
         if ( resp.status ){
           await this.datosLocalStorage( resp.data );
+          await this.datosLocalStorageUsuario( resp.data );
           resolve(true);
         }else{
           this.data = null;
@@ -33,14 +35,31 @@ export class UserService {
     });
   }
 
-  async datosLocalStorage( data: null){
+  async datosLocalStorage( data: any ){
     this.storage.create();
     this.data = data;
     await this.storage.set('datos', data);
   }
 
+  async datosLocalStorageUsuario( data: any ){
+    this.storage.create();
+    this.tipoUsuario = data.tipo_usuario;
+    await this.storage.set('tipoUsuario', this.tipoUsuario);
+  }
+
   async getPerfil<T>(){
     this.datosUsuario = await this.storage.get('datos');
     return this.http.get<T>(`http://asms.pruebasgt.net/SISTEM/API/API_perfil_padre.php?request=get_padre&tipo=3&codigo=${this.datosUsuario.tipo_codigo}`);
+  }
+
+  async getMenuOpts() {
+    this.datosUsuario = await this.storage.get('datos');
+    if (this.datosUsuario.tipo_usuario == '1' || this.datosUsuario.tipo_usuario == '2' ) {
+      return this.http.get('/assets/data/menuProfs.json');
+    } else if ( this.datosUsuario.tipo_usuario == '3' ) {
+      return this.http.get('/assets/data/menuPadres.json');
+    } else {
+      return this.http.get('/assets/data/menuAlumnos.json');
+    }
   }
 }

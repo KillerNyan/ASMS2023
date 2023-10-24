@@ -12,7 +12,7 @@ export class TabsPage {
 
   constructor(private router: Router, private storage: Storage, public loadingController: LoadingController) {}
 
-  async logOut(){
+  /* async logOut(){
     this.router.navigateByUrl('/login');
     this.storage.remove('datos');
     this.storage.remove('ordenes');
@@ -33,6 +33,6 @@ export class TabsPage {
       message: 'Cargando...'
     });
     await loading.present();
-  }
+  } */
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { NavController, LoadingController} from '@ionic/angular';
+import { NavController, LoadingController, MenuController} from '@ionic/angular';
 import { UserService } from '../../services/user.service';
 import { Storage } from '@ionic/storage';
 import { AlertService } from 'src/app/services/alert.service';
@@ -18,12 +18,15 @@ export class LoginPage implements OnInit {
   };
   loginForm: FormGroup;
 
+  datosUsuario: any;
+
   constructor(private navCtrl: NavController, private userService: UserService, public loadingController: LoadingController,
-              private alertService: AlertService,  private storage: Storage) {
+              private alertService: AlertService,  private storage: Storage, private menuCtrl: MenuController) {
                 this.loginForm = this.createFormGroup();
               }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   createFormGroup() {
     return new FormGroup({
@@ -47,7 +50,12 @@ export class LoginPage implements OnInit {
       const valid = await this.userService.login(this.loginForm.value.nombre, this.loginForm.value.password);
       if (valid){
         await this.loadingController.dismiss();
-        this.navCtrl.navigateRoot('/');
+        this.datosUsuario = await this.storage.get('datos');
+        if ( this.datosUsuario.tipo_usuario == '1' || this.datosUsuario.tipo_usuario == '2' ){
+          this.navCtrl.navigateRoot('/grados');
+        } else {
+          this.navCtrl.navigateRoot('/');
+        }
       }else{
         this.loadingController.dismiss();
         const message = 'Usuario y/o Contraseña son incorrectos';

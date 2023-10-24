@@ -20,12 +20,31 @@ export class AsmsServiceService {
 
   async getActividades<T>(){
     this.datosUsuario = await this.storage.get('datos');
-    //return this.http.get<T>(`${asmsURL}API_gestor_actividades.php?request=actividades&tipo=${this.datosUsuario.tipo_usuario}`);
-    return this.http.get<T>(`${asmsURL}API_gestor_actividades.php?request=actividades&tipo=5`);
+    return this.http.get<T>(`${asmsURL}API_gestor_actividades.php?request=actividades&tipo=${this.datosUsuario.tipo_usuario}`);
   }
 
   async getActividad<T>(codigo: any){
     this.datosActividad = await this.storage.get('datos');
     return this.http.get<T>(`${asmsURL}API_gestor_actividades.php?request=actividad&codigo=${codigo}`);
+  }
+
+  async getSecciones<T>() {
+    this.datosUsuario = await this.storage.get('datos');
+    return this.http.get<T>(`${asmsURL}API_alumnos.php?request=usuario_secciones&tipo=${this.datosUsuario.tipo_usuario}&codigo=${this.datosUsuario.tipo_codigo}`);
+  }
+
+  async getTareas<T>() {
+    this.datosUsuario = await this.storage.get('datos');
+    return this.http.get<T>(`${asmsURL}API_tareas.php?request=materias&nivel=1&grado=1`);
+  }
+
+  async getCirculares<T>() {
+    this.datosUsuario = await this.storage.get('datos');
+    return this.http.get<T>(`${asmsURL}API_gestor_circulares.php?request=circulares&maestro=1`); //falta agregar el page
+  }
+
+  async getAlbumes<T>() {
+    this.datosUsuario = await this.storage.get('datos');
+    return this.http.get<T>(`${asmsURL}API_photos.php?request=lista_albumes&tipo=1&codigo=1`); //falta agregar el page
   }
 }

@@ -1,0 +1,9 @@
+<app-header titulo="secciones (tareas)"></app-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card *ngFor="let seccion of secciones">
+    <ion-card-title color="light"> {{ seccion.grado_descripcion }} Seccion: {{ seccion.seccion_descripcion }} </ion-card-title>
+  </ion-card>
+  
+</ion-content>

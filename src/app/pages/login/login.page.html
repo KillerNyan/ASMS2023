@@ -10,7 +10,7 @@
         <ion-list>
           <ion-item mode="md">
             <ion-icon slot="start" name="person-circle-outline"></ion-icon>
-            <ion-input placeholder="User" type="name" clearOnEdit="true" clearInput formControlName="nombre">
+            <ion-input type="name" clearOnEdit="true" clearInput formControlName="nombre" label="Usuario:" labelPlacement="floating">
             </ion-input>
           </ion-item>
           <div class="errors" *ngIf="nombre!.invalid && (nombre!.dirty || nombre!.touched)">
@@ -20,7 +20,7 @@
           </div>
           <ion-item mode="md">
             <ion-icon slot="start" name="lock-open"></ion-icon>
-            <ion-input placeholder="Password" type="password" clearOnEdit="true" clearInput formControlName="password">
+            <ion-input type="password" clearOnEdit="true" clearInput formControlName="password" label="Contraseña:" labelPlacement="floating">
             </ion-input>
           </ion-item>
           <div class="errors" *ngIf="password!.invalid && (password!.dirty || password!.touched)">
