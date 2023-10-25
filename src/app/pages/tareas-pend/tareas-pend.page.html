@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <ion-button (click)="cerrar()" expand="block" slot="start">
+      <ion-icon slot="start" name="arrow-back-outline"></ion-icon>Atras
+    </ion-button>
+
+    <ion-title> {{ gradoDesc }} Seccion: {{ seccionDesc }} </ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle> {{ materiaDesc }} </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card *ngFor="let tarea of tareas">
+    <ion-card-content>
+      <ion-card-subtitle> {{ tarea.descripcion }} </ion-card-subtitle>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AsmsServiceService } from 'src/app/services/asms-service.service';
+import { ModalController } from '@ionic/angular';
+import { MateriasPage } from '../materias/materias.page';
 
 @Component({
   selector: 'app-tareas',
@@ -10,12 +12,31 @@ export class TareasPage implements OnInit {
 
   secciones: any[] = [];
 
-  constructor( private asmsSrvc: AsmsServiceService ) { }
+  constructor( private asmsSrvc: AsmsServiceService, private modalCtrl: ModalController ) { }
 
   async ngOnInit() {
-    (await this.asmsSrvc.getSecciones()).subscribe((secciones: any) => {
+    (await this.asmsSrvc.getSecciones()).subscribe(async (secciones: any) => {
       this.secciones = secciones;
     })
+  }
+
+  async verMaterias(pos: any) {
+    const gradDesc = this.secciones[pos].grado_descripcion;
+    const secDesc = this.secciones[pos].seccion_descripcion;
+    const niv = this.secciones[pos].nivel;
+    const grad = this.secciones[pos].grado;
+    const sec = this.secciones[pos].seccion;
+    const circular = await this.modalCtrl.create({
+      component: MateriasPage,
+      componentProps: {
+        gradoDesc: gradDesc,
+        nivel: niv,
+        grado: grad,
+        seccionDesc: secDesc,
+        seccion: sec
+      }
+    })
+    await circular.present();
   }
 
 }

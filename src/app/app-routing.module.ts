@@ -60,6 +60,14 @@ const routes: Routes = [
     path: 'circular',
     loadChildren: () => import('./pages/circular/circular.module').then( m => m.CircularPageModule)
   },
+  {
+    path: 'materias',
+    loadChildren: () => import('./pages/materias/materias.module').then( m => m.MateriasPageModule)
+  },
+  {
+    path: 'tareas-pend',
+    loadChildren: () => import('./pages/tareas-pend/tareas-pend.module').then( m => m.TareasPendPageModule)
+  },
 
 ];
 @NgModule({

@@ -33,9 +33,12 @@ export class AsmsServiceService {
     return this.http.get<T>(`${asmsURL}API_alumnos.php?request=usuario_secciones&tipo=${this.datosUsuario.tipo_usuario}&codigo=${this.datosUsuario.tipo_codigo}`);
   }
 
-  async getTareas<T>() {
-    this.datosUsuario = await this.storage.get('datos');
-    return this.http.get<T>(`${asmsURL}API_tareas.php?request=materias&nivel=1&grado=1`);
+  async getMaterias<T>(nivel: any, grado: any) {
+    return this.http.get<T>(`${asmsURL}API_tareas.php?request=materias&nivel=${nivel}&grado=${grado}`);
+  }
+
+  async getTareas<T>(nivel: any, grado: any, seccion: any, codigo: any) {
+    return this.http.get<T>(`${asmsURL}API_tareas.php?request=tareas_materias&nivel=${nivel}&grado=${grado}&seccion=${seccion}&materia=${codigo}`);
   }
 
   async getCirculares<T>() {

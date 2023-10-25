@@ -21,9 +21,13 @@ export class CircularesPage implements OnInit {
     })
   }
 
-  async abrirCircular() {
+  async abrirCircular(pos: any) {
+    const tit = this.circulares[pos].titulo;
     const circular = await this.modalCtrl.create({
       component: CircularPage,
+      componentProps: {
+        titulo: tit
+      }
     })
     await circular.present();
   }
