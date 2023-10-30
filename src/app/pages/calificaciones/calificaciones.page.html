@@ -1,13 +1,9 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>calificaciones</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header titulo="calificaciones (secciones)"></app-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">calificaciones</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+
+  <ion-card *ngFor="let seccion of secciones">
+    <ion-card-title color="light"> {{ seccion.grado_descripcion }} Seccion: {{ seccion.seccion_descripcion }} </ion-card-title>
+  </ion-card>
+
 </ion-content>

@@ -7,8 +7,23 @@
       <!-- <ion-img src="../../../assets/img/user.jpg"></ion-img> -->
     </ion-item>
     <ion-item>
-      <ion-input type="text" placeholder=""></ion-input>
+      <ion-input type="name" clearOnEdit="true" clearInput label="Nombre:" labelPlacement="floating"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-input type="email" clearOnEdit="true" clearInput label="Email:" labelPlacement="floating"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" clearOnEdit="true" clearInput label="Telefono:" labelPlacement="floating"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" clearOnEdit="true" clearInput label="Asunto:" labelPlacement="floating"></ion-input>
+    </ion-item>
+    <ion-item class="ion-padding" color="light">
+      <ion-textarea type="text" clearOnEdit="true" Placeholder="Mensaje:" fill="outline"></ion-textarea>
+    </ion-item>
+      <ion-button expand="block" shape="round">
+        ENVIAR
+      </ion-button>
   </ion-list>
   
 </ion-content>

@@ -22,8 +22,10 @@ export class TareasPendPage implements OnInit {
   tareas: any[] = [];
 
   async ngOnInit() {
-    (await this.asmsSrvc.getTareas(this.nivel, this.grado, this.seccion, this.codigo)).subscribe(async (tareas: any) => {
-      this.tareas = tareas;
+    (await this.asmsSrvc.getTareas(this.nivel, this.grado, this.seccion, this.codigo)).subscribe(async (resp: any) => {
+      if ( resp.status == 'true') {
+        this.tareas = resp.data;
+      } 
     })
   }
 

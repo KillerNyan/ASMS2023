@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AsmsServiceService } from 'src/app/services/asms-service.service';
 
 @Component({
   selector: 'app-calificaciones',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalificacionesPage implements OnInit {
 
-  constructor() { }
+  secciones: any[] = [];
 
-  ngOnInit() {
+  constructor( private asmsSrvc: AsmsServiceService ) { }
+
+  async ngOnInit() {
+    (await this.asmsSrvc.getSecciones()).subscribe( (secciones: any) => {
+      this.secciones = secciones;
+    })
   }
 
 }

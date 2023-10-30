@@ -17,16 +17,27 @@ export class CircularesPage implements OnInit {
   async ngOnInit() {
     (await this.asmsSrvc.getCirculares()).subscribe( (circulares: any) => {
       this.circulares = circulares;
-      console.log(this.circulares);
     })
   }
 
   async abrirCircular(pos: any) {
     const tit = this.circulares[pos].titulo;
+    const fec = this.circulares[pos].fecha_publicacion;
+    const hor = this.circulares[pos].hora_publicacion;
+    const desc = this.circulares[pos].descripcion;
+    const down = this.circulares[pos].descarga;
+    const link = this.circulares[pos].link;
+    const aut = this.circulares[pos].requiere_autorizacion;
     const circular = await this.modalCtrl.create({
       component: CircularPage,
       componentProps: {
-        titulo: tit
+        titulo: tit,
+        fecha: fec,
+        hora: hor,
+        descripcion: desc,
+        descarga: down,
+        link: link,
+        autorizacion: aut
       }
     })
     await circular.present();
