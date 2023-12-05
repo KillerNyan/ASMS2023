@@ -50,4 +50,8 @@ export class AsmsServiceService {
     this.datosUsuario = await this.storage.get('datos');
     return this.http.get<T>(`${asmsURL}API_photos.php?request=lista_albumes&tipo=1&codigo=1`); //falta agregar el page
   }
+
+  async getAlumnos<T>(grado: any, nivel: any, seccion: any) {
+    return this.http.get<T>(`${asmsURL}API_alumnos.php?request=lista_alumnos&nivel=${nivel}&grado=${grado}&seccion=${seccion}`);
+  }
 }

@@ -1,0 +1,57 @@
+<app-header titulo="Home"></app-header>
+
+<ion-content>
+
+  <ion-tabs>
+  
+    <ion-tab-bar slot="top" class="ion-padding">
+      <ion-tab-button tab="notificaciones">
+        <ion-icon aria-hidden="true" name="notifications" color="primary"></ion-icon>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="multimedia">
+        <ion-icon aria-hidden="true" name="images" color="primary"></ion-icon>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="pinboard">
+        <ion-icon aria-hidden="true" name="pin" color="primary"></ion-icon>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="circulares">
+        <ion-icon aria-hidden="true" name="document-text" color="primary"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end" style="margin-bottom: 60px;">
+      <ion-fab-button size="medium">
+        <ion-icon style="zoom: 1.2;" name="chevron-up-circle-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="top">
+        <ion-fab-button style="width: 50px; height: 50px;">
+          <ion-icon name="calendar-outline" style="zoom: 1.5;" color="primary"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button style="width: 50px; height: 50px;">
+          <ion-icon name="people-outline" style="zoom: 1.5;" color="primary"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button style="width: 50px; height: 50px;">
+          <ion-icon name="chatbubbles-outline" style="zoom: 1.5;" color="primary"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button style="width: 50px; height: 50px;" routerLink="/perfil">
+          <ion-icon name="people" style="zoom: 1.5;" color="primary"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+  
+  </ion-tabs>
+
+  <br><br><br><br>
+  
+  <ion-img src="../../../../assets/img/logo.jpg" class="ion-padding"></ion-img>
+
+  <ion-label class="ion-padding">Te diriges a las videoclases?</ion-label>
+
+  <ion-button expand="block" shape="round">
+    Ir a videoclases >
+  </ion-button>
+
+</ion-content>

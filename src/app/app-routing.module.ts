@@ -67,7 +67,31 @@ const routes: Routes = [
   {
     path: 'tareas-pend',
     loadChildren: () => import('./pages/tareas-pend/tareas-pend.module').then( m => m.TareasPendPageModule)
+  },  {
+    path: 'tab',
+    loadChildren: () => import('./pages/padres/tab/tab.module').then( m => m.TabPageModule)
   },
+  {
+    path: 'notificaciones',
+    loadChildren: () => import('./pages/padres/notificaciones/notificaciones.module').then( m => m.NotificacionesPageModule)
+  },
+  {
+    path: 'pinboard',
+    loadChildren: () => import('./pages/padres/pinboard/pinboard.module').then( m => m.PinboardPageModule)
+  },
+  {
+    path: 'multimedia',
+    loadChildren: () => import('./pages/padres/multimedia/multimedia.module').then( m => m.MultimediaPageModule)
+  },
+  {
+    path: 'circulares',
+    loadChildren: () => import('./pages/padres/circulares/circulares.module').then( m => m.CircularesPageModule)
+  },
+  {
+    path: 'alumnos',
+    loadChildren: () => import('./pages/alumnos/alumnos.module').then( m => m.AlumnosPageModule)
+  },
+
 
 ];
 @NgModule({

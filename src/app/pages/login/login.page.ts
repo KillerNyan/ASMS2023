@@ -53,6 +53,8 @@ export class LoginPage implements OnInit {
         this.datosUsuario = await this.storage.get('datos');
         if ( this.datosUsuario.tipo_usuario == '1' || this.datosUsuario.tipo_usuario == '2' ){
           this.navCtrl.navigateRoot('/grados');
+        } else if (this.datosUsuario.tipo_usuario == '3') {
+          this.navCtrl.navigateRoot('/tab');
         } else {
           this.navCtrl.navigateRoot('/');
         }
