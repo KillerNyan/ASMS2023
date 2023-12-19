@@ -12,7 +12,7 @@
     {
         "name": "Gestor Postit",
         "icon": "pin-outline",
-        "redirectTo": "/postit"
+        "redirectTo": "/post-sec"
     },
     {
         "name": "Calificaciones",

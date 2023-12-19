@@ -1,27 +1,78 @@
+<!-- <ion-menu side="start" menuId="menu" contentId="main" mode="md">
+  <ion-header>
+    <ion-toolbar class="menu" color="primary">
+      <ion-title class="ion-text-center"> MENÚ </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="menu-content">
+    <ion-item>
+      <img src="../../../assets/img/user.jpg" width="60%" slot="start" class="img">
+    </ion-item>
+    <ion-menu-toggle *ngFor="let c of componentes">
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item (click)="navegar( c.redirectTo )">
+            <ion-icon [name]="c.icon" slot="start" color="primary"></ion-icon>
+            <ion-label color="primary">{{ c.name }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-menu-toggle>
+  </ion-content>
+  
+  <ion-footer>
+    <ion-menu-toggle>
+      <ion-toolbar>
+        <ion-buttons slot="end" mode="ios" class="item-padding-salir">
+          <ion-button color="dark" (click)="logOut()">
+            <ion-icon slot="start" name="power-outline" class="icon-menu"></ion-icon>
+            <ion-note>Salir</ion-note>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-menu-toggle>
+  </ion-footer>
+</ion-menu> -->
+
+<!-- <ion-header>
+  <ion-toolbar color="primary" id="main">
+
+    <ion-buttons slot="start">
+      <ion-menu-button menu="menu" class="icon-menu"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-capitalize"> Home </ion-title>
+
+  </ion-toolbar>
+</ion-header> -->
+
 <app-header titulo="Home"></app-header>
 
 <ion-content>
 
+<div>
   <ion-tabs>
-  
+    
+    
     <ion-tab-bar slot="top" class="ion-padding">
       <ion-tab-button tab="notificaciones">
-        <ion-icon aria-hidden="true" name="notifications" color="primary"></ion-icon>
+        <ion-icon aria-hidden="true" name="notifications"></ion-icon>
       </ion-tab-button>
-  
+      
       <ion-tab-button tab="multimedia">
-        <ion-icon aria-hidden="true" name="images" color="primary"></ion-icon>
+        <ion-icon aria-hidden="true" name="images"></ion-icon>
       </ion-tab-button>
-  
+      
       <ion-tab-button tab="pinboard">
-        <ion-icon aria-hidden="true" name="pin" color="primary"></ion-icon>
+        <ion-icon aria-hidden="true" name="pin"></ion-icon>
       </ion-tab-button>
-  
+      
       <ion-tab-button tab="circulares">
-        <ion-icon aria-hidden="true" name="document-text" color="primary"></ion-icon>
+        <ion-icon aria-hidden="true" name="document-text"></ion-icon>
       </ion-tab-button>
     </ion-tab-bar>
-  
+    
     <ion-fab slot="fixed" vertical="bottom" horizontal="end" style="margin-bottom: 60px;">
       <ion-fab-button size="medium">
         <ion-icon style="zoom: 1.2;" name="chevron-up-circle-outline"></ion-icon>
@@ -41,17 +92,18 @@
         </ion-fab-button>
       </ion-fab-list>
     </ion-fab>
-  
+    
   </ion-tabs>
-
-  <br><br><br><br>
+</div>
   
+<div>
   <ion-img src="../../../../assets/img/logo.jpg" class="ion-padding"></ion-img>
-
+  
   <ion-label class="ion-padding">Te diriges a las videoclases?</ion-label>
-
+  
   <ion-button expand="block" shape="round">
     Ir a videoclases >
   </ion-button>
+</div>
 
 </ion-content>

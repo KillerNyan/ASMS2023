@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { AsmsServiceService } from 'src/app/services/asms-service.service';
 import { AlumnosPage } from '../alumnos/alumnos.page';
+import { Storage } from '@ionic/storage-angular';
+import { TareasPage } from '../tareas/tareas.page';
+import { PostSecPage } from '../post-sec/post-sec.page';
+import { CalificacionesPage } from '../calificaciones/calificaciones.page';
+import { CircularesPage } from '../circulares/circulares.page';
+import { PhotosPage } from '../photos/photos.page';
+import { ReportesPage } from '../reportes/reportes.page';
+import { SoportePage } from '../soporte/soporte.page';
 
 @Component({
   selector: 'app-grados',
@@ -12,7 +20,7 @@ export class GradosPage implements OnInit {
 
   secciones: any[] = [];
 
-  constructor( private asmsSrvc: AsmsServiceService, private modalCtrl: ModalController ) { }
+  constructor( private asmsSrvc: AsmsServiceService, private modalCtrl: ModalController, private storage: Storage, private navCtrl: NavController ) { }
 
   async ngOnInit() {
     (await this.asmsSrvc.getSecciones()).subscribe( (secciones: any) => {
@@ -37,6 +45,64 @@ export class GradosPage implements OnInit {
       }
     })
     await alumnos.present();
+  }
+
+  componentes: any[] = [];
+
+  async logOut(){
+    this.navCtrl.navigateRoot('/login');
+    this.storage.remove('datos');
+    this.storage.remove('ordenes');
+    this.storage.clear();
+  }
+
+  async verTareas() {
+    const pagina = await this.modalCtrl.create({
+      component: TareasPage,
+    })
+    await pagina.present();
+  }
+
+  async verPostit() {
+    const pagina = await this.modalCtrl.create({
+      component: PostSecPage,
+    })
+    await pagina.present();
+  }
+
+  async verCalificaciones() {
+    const pagina = await this.modalCtrl.create({
+      component: CalificacionesPage,
+    })
+    await pagina.present();
+  }
+
+  async verCirculares() {
+    const pagina = await this.modalCtrl.create({
+      component: CircularesPage,
+    })
+    await pagina.present();
+  }
+
+  async verPhotoAlbum() {
+    const pagina = await this.modalCtrl.create({
+      component: PhotosPage,
+    })
+    await pagina.present();
+  }
+
+  async verReportes() {
+    const pagina = await this.modalCtrl.create({
+      component: ReportesPage,
+    })
+    await pagina.present();
+  }
+
+  async verSoporte() {
+    const pagina = await this.modalCtrl.create({
+      component: SoportePage,
+    })
+    await pagina.present();
   }
 
 }

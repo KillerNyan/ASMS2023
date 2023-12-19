@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { AsmsServiceService } from 'src/app/services/asms-service.service';
 
 import { register } from 'swiper/element/bundle';
@@ -14,21 +15,21 @@ export class PhotosPage implements OnInit {
 
   albumes: any[] = [];
   photos: any[] = [];
-  alumnos: any[] = [];
   
-  constructor( private asmsSrvc: AsmsServiceService ) { }
+  constructor( private asmsSrvc: AsmsServiceService, private modalCtrl: ModalController ) { }
   
   async ngOnInit() {
     (await this.asmsSrvc.getAlbumes()).subscribe( (albumes: any) => {
       this.albumes = albumes;
-      console.log(albumes);
     })
   }
   
   mostrarFotos(pos: any){
     this.photos = this.albumes[pos].imagenes;
-    console.log(this.photos)
   }
 
+  cerrar() {
+    this.modalCtrl.dismiss();
+  }
 
 }

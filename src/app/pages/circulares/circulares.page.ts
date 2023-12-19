@@ -42,4 +42,8 @@ export class CircularesPage implements OnInit {
     })
     await circular.present();
   }
+
+  cerrar() {
+    this.modalCtrl.dismiss();
+  }
 }

@@ -13,7 +13,7 @@ export class HeaderComponent {
 
   componentes: any[] = [];
   
-  constructor( private router: Router, private storage: Storage, private userSrvc: UserService, private navCtrl: NavController, private menuCtrl: MenuController ) {}
+  constructor( private storage: Storage, private userSrvc: UserService, private navCtrl: NavController ) {}
 
   @Input() titulo: string = '';
 

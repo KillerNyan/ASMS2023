@@ -43,15 +43,21 @@ export class AsmsServiceService {
 
   async getCirculares<T>() {
     this.datosUsuario = await this.storage.get('datos');
-    return this.http.get<T>(`${asmsURL}API_gestor_circulares.php?request=circulares&maestro=1`); //falta agregar el page
+    return this.http.get<T>(`${asmsURL}API_gestor_circulares.php?request=circulares&maestro=1`);
   }
 
   async getAlbumes<T>() {
     this.datosUsuario = await this.storage.get('datos');
-    return this.http.get<T>(`${asmsURL}API_photos.php?request=lista_albumes&tipo=1&codigo=1`); //falta agregar el page
+    return this.http.get<T>(`${asmsURL}API_photos.php?request=lista_albumes&tipo=1&codigo=1`);
   }
 
   async getAlumnos<T>(grado: any, nivel: any, seccion: any) {
     return this.http.get<T>(`${asmsURL}API_alumnos.php?request=lista_alumnos&nivel=${nivel}&grado=${grado}&seccion=${seccion}`);
   }
+
+  async getPostit<T>(grado: any, nivel: any, seccion: any) {
+    return this.http.get<T>(`${asmsURL}API_gestor_pinboard.php?request=postits_mestro&maestro=6&nivel=${nivel}&grado=${grado}&seccion=${seccion}`);
+  }
+
+  //API_gestor_pinboard.php?request=postits_mestro&maestro=6&nivel=1&grado=1&seccion=1&page=0
 }

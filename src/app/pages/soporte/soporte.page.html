@@ -1,4 +1,14 @@
-<app-header titulo="soporte"></app-header>
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <ion-button (click)="cerrar()" slot="start">
+      <ion-icon name="arrow-back-outline" slot="start"></ion-icon>Atras
+    </ion-button>
+    
+    <ion-title>Soporte Tecnico</ion-title>
+
+  </ion-toolbar>
+</ion-header>
 
 <ion-content class="ion-padding">
 
@@ -25,5 +35,24 @@
         ENVIAR
       </ion-button>
   </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Residenciales Sandbox</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Zona 4, Guatemala</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Teléfono: (502) 2285-2203 al 06</ion-label>
+    </ion-item>
+    <ion-item>
+      <a href="mailto:admisiones@sandbox.edu.gt">admisiones@sandbox.edu.gt</a>
+    </ion-item>
+    <ion-item>
+      <a href="http://sandbox.inversionesd.com">https://sandbox.inversionesd.com</a>
+    </ion-item>
+  </ion-list>
+
   
 </ion-content>

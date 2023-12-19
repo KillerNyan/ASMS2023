@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     canActivate: [GuardGuard],
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'perfil',
@@ -67,7 +67,8 @@ const routes: Routes = [
   {
     path: 'tareas-pend',
     loadChildren: () => import('./pages/tareas-pend/tareas-pend.module').then( m => m.TareasPendPageModule)
-  },  {
+  },
+  {
     path: 'tab',
     loadChildren: () => import('./pages/padres/tab/tab.module').then( m => m.TabPageModule)
   },
@@ -91,6 +92,26 @@ const routes: Routes = [
     path: 'alumnos',
     loadChildren: () => import('./pages/alumnos/alumnos.module').then( m => m.AlumnosPageModule)
   },
+  {
+    path: 'cali-alumnos',
+    loadChildren: () => import('./pages/cali-alumnos/cali-alumnos.module').then( m => m.CaliAlumnosPageModule)
+  },  {
+    path: 'post-sec',
+    loadChildren: () => import('./pages/post-sec/post-sec.module').then( m => m.PostSecPageModule)
+  },
+  {
+    path: 'detalle-postit',
+    loadChildren: () => import('./pages/detalle-postit/detalle-postit.module').then( m => m.DetallePostitPageModule)
+  },
+  {
+    path: 'nuevo-postit',
+    loadChildren: () => import('./pages/nuevo-postit/nuevo-postit.module').then( m => m.NuevoPostitPageModule)
+  },
+  {
+    path: 'detalles-alumno',
+    loadChildren: () => import('./pages/detalles-alumno/detalles-alumno.module').then( m => m.DetallesAlumnoPageModule)
+  },
+
 
 
 ];

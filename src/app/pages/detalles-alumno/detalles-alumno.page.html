@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <ion-button (click)="cerrar()" slot="start">
+      <ion-icon name="arrow-back-outline" slot="start"></ion-icon>Atras
+    </ion-button>
+
+    <ion-title>Alumnos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding">
+    <ion-avatar>
+      <ion-img src="{{ foto }}"></ion-img>
+    </ion-avatar>
+  </div>
+
+  <div>
+    <ion-list>
+      <ion-item>
+        <ion-label class="ion-padding-top titulo">Nombre Completo:</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ nombre }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-padding-top titulo">Numero de Cui:</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ cui }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-padding-top titulo">Grado y Seccion:</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ seccion }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+
+</ion-content>

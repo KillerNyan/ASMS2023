@@ -39,4 +39,8 @@ export class TareasPage implements OnInit {
     await circular.present();
   }
 
+  cerrar() {
+    this.modalCtrl.dismiss();
+  }
+
 }

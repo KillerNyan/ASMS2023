@@ -2,7 +2,7 @@
     {
         "name": "Inicio",
         "icon": "happy-outline",
-        "redirectTo": "/tabs/tab1"
+        "redirectTo": "/tab/notificaciones"
     },
     {
         "name": "Encuesta",

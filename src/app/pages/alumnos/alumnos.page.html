@@ -9,19 +9,23 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
 
   <ion-card class="ion-padding">
     <ion-card-title> {{ gradoDesc }} Seccion: {{ seccionDesc }} </ion-card-title>
   </ion-card>
 
-  <ion-card *ngFor="let alumno of alumnos" detailed>
-    <ion-card-content>
-      <ion-avatar>
+  <ion-list>
+    <ion-item *ngFor="let alumno of alumnos; let i = index" detail (click)="verDetalleAlumnos(i)">
+      <ion-avatar slot="start">
         <img src="{{ alumno.url_foto }}" />
       </ion-avatar>
-      <ion-card-subtitle> {{ alumno.nombre }} </ion-card-subtitle>
-    </ion-card-content>
-  </ion-card>
+      <ion-label> {{ alumno.nombre }} </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="InfiniteScroll($event)">
+    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>

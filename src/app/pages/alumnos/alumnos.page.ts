@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { InfiniteScrollCustomEvent, ModalController } from '@ionic/angular';
 import { AsmsServiceService } from 'src/app/services/asms-service.service';
+import { DetallesAlumnoPage } from '../detalles-alumno/detalles-alumno.page';
 
 @Component({
   selector: 'app-alumnos',
@@ -26,6 +27,29 @@ export class AlumnosPage implements OnInit {
         console.log(alumnos);
       }
     })
+  }
+
+  async verDetalleAlumnos(pos: any){
+    const pic = this.alumnos[pos].url_foto;
+    const name = this.alumnos[pos].nombre;
+    const num = this.alumnos[pos].cui;
+    const sec = this.alumnos[pos].seccion;
+    const pagina = await this.modalCtrl.create({
+      component: DetallesAlumnoPage,
+      componentProps: {
+        foto: pic,
+        nombre: name,
+        cui: num,
+        seccion: sec,
+      }
+    })
+    await pagina.present();
+  }
+
+  InfiniteScroll(a: any){
+    setTimeout(() => {
+      (a as InfiniteScrollCustomEvent).target.complete();
+    }, 500);
   }
 
   cerrar() {

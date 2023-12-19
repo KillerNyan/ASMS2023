@@ -10,23 +10,27 @@
 </ion-header>
 
 <ion-content>
+  <div class="fondo">
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle> {{ gradoDesc }} Seccion: {{ seccionDesc }} </ion-card-subtitle>
-    </ion-card-header>
-  </ion-card>
 
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col size="6" *ngFor="let materia of materias, let i = index" (click)="verTareas(i)">
-        <ion-card>
-          <ion-card-content>
-            <ion-card-subtitle> {{ materia.descripcion }} </ion-card-subtitle>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  
+    <ion-card class="titulo">
+      <ion-card-header>
+        <ion-card-subtitle> {{ gradoDesc }} Seccion: {{ seccionDesc }} </ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+
+    <ion-grid fixed class="ion-padding">
+      <ion-row class="chalkboard-line">
+        <ion-col size="6" *ngFor="let materia of materias, let i = index" (click)="verTareas(i)" class="chalkboard-row">
+          <ion-card class="materias">
+            <ion-card-content>
+              <ion-card-subtitle color="light" class="ion-padding-bottom"> {{ materia.descripcion }}
+              </ion-card-subtitle>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
 </ion-content>

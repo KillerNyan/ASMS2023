@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar color="primary">
+
+    <ion-button (click)="cerrar()" slot="start">
+      <ion-icon name="arrow-back-outline" slot="start"></ion-icon>Atras
+    </ion-button>
+
+    <ion-title>POST IT</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="ion-padding">
+    <ion-label>Titulo del Post It:</ion-label>
+  </div>
+  <div class="ion-padding">
+    <ion-label color="medium">{{ titulo }}</ion-label>
+  </div>
+  <div class="ion-padding">
+    <ion-label>Descripcion del Post It:</ion-label>
+  </div>
+  <div class="ion-padding">
+    <ion-label color="medium">{{ descripcion }}</ion-label>
+  </div>
+  <div class="ion-padding">
+    <ion-label>Fecha del Post It:</ion-label>
+  </div>
+  <div class="ion-padding">
+    <ion-label color="medium">{{ fecha }}</ion-label>
+  </div>
+  <div class="ion-padding">
+    <ion-label>Alumno:</ion-label>
+  </div>
+  <div class="ion-padding">
+    <ion-label color="medium">{{ alumno }}</ion-label>
+  </div>
+
+  <div class="ion-padding">
+    <swiper-container>
+      <swiper-slide *ngFor="let imagen of imagenes">
+        <img src="{{ imagen.imagen_url }}">
+      </swiper-slide>
+      <swiper-slide *ngFor="let archivo of archivos">
+        <a href="{{ archivo.archivo_url }}" target="_blank">
+          <ion-img src="{{ archivo.icono }}"></ion-img>
+        </a>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+
+</ion-content>

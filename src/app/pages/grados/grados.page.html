@@ -1,4 +1,79 @@
-<app-header titulo="secciones (alumnos)"></app-header>
+<ion-menu side="start" menuId="menu" contentId="main" mode="md">
+  <ion-header>
+    <ion-toolbar class="menu" color="primary">
+      <ion-title class="ion-text-center"> MENÚ </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="menu-content">
+    <ion-item>
+      <img src="../../../assets/img/user.jpg" width="60%" slot="start" class="img">
+    </ion-item>
+    <ion-menu-toggle>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item routerLink="/grados">
+            <ion-icon name="" slot="start" color="primary"></ion-icon>
+            <ion-label color="primary">Alumnos</ion-label>
+          </ion-item>
+          <ion-item (click)="verTareas()">
+            <ion-icon name="" slot="start" color="primary"></ion-icon>
+            <ion-label color="primary">Tareas</ion-label>
+          </ion-item>
+          <ion-item (click)="verPostit()">
+            <ion-icon name="" slot="start" color="primary"></ion-icon>
+            <ion-label color="primary">Gestor de Post It</ion-label>
+          </ion-item>
+          <ion-item (click)="verCalificaciones()">
+            <ion-icon name="" slot="start" color="primary"></ion-icon>
+            <ion-label color="primary">Calificaciones</ion-label>
+          </ion-item>
+          <ion-item (click)="verCirculares()">
+            <ion-icon name="" slot="start" color="primary"></ion-icon>
+            <ion-label color="primary">Circulares</ion-label>
+          </ion-item>
+          <ion-item (click)="verPhotoAlbum()">
+            <ion-icon name="" slot="start" color="primary"></ion-icon>
+            <ion-label color="primary">Gestor Photo Album</ion-label>
+          </ion-item>
+          <ion-item (click)="verReportes()">
+            <ion-icon name="" slot="start" color="primary"></ion-icon>
+            <ion-label color="primary">Reportes</ion-label>
+          </ion-item>
+          <ion-item (click)="verSoporte()">
+            <ion-icon name="" slot="start" color="primary"></ion-icon>
+            <ion-label color="primary">Soporte Tecnico</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-menu-toggle>
+  </ion-content>
+  
+  <ion-footer>
+    <ion-menu-toggle>
+      <ion-toolbar>
+        <ion-buttons slot="end" mode="ios" class="item-padding-salir">
+          <ion-button color="dark" (click)="logOut()">
+            <ion-icon slot="start" name="power-outline" class="icon-menu"></ion-icon>
+            <ion-note>Salir</ion-note>
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-menu-toggle>
+  </ion-footer>
+</ion-menu>
+
+<ion-header>
+  <ion-toolbar color="primary" id="main">
+
+    <ion-buttons slot="start">
+      <ion-menu-button menu="menu" class="icon-menu"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-capitalize"> secciones (alumnos) </ion-title>
+
+  </ion-toolbar>
+</ion-header>
 
 <ion-content class="ion-padding">
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Storage } from '@ionic/storage-angular';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-soporte',
@@ -8,13 +8,13 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class SoportePage implements OnInit {
 
-  datosUsuario: any[] = [];
-
-  constructor( private strg: Storage) { }
+  constructor( private modalCtrl: ModalController ) { }
 
   async ngOnInit() {
-    this.datosUsuario = await this.strg.get('datos');
-    console.log(this.datosUsuario);
+  }
+
+  cerrar() {
+    this.modalCtrl.dismiss();
   }
 
 }
