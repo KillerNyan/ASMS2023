@@ -23,7 +23,6 @@ export class MateriasPage implements OnInit {
   async ngOnInit() {
     (await this.asmsSrvc.getMaterias(this.nivel, this.grado)).subscribe((materias: any) => {
       this.materias = materias;
-      console.log(materias);
     })
   }
 
@@ -33,7 +32,7 @@ export class MateriasPage implements OnInit {
     const niv = this.nivel;
     const grad = this.grado;
     const sec = this.seccion;
-    const cod = this.materias[pos].codigo;
+    const codMat = this.materias[pos].codigo;
     const matDesc = this.materias[pos].descripcion;
     const circular = await this.modalCtrl.create({
       component: TareasPendPage,
@@ -43,7 +42,7 @@ export class MateriasPage implements OnInit {
         grado: grad,
         seccionDesc: secDesc,
         seccion: sec,
-        codigo: cod,
+        codigoMateria: codMat,
         materiaDesc: matDesc
       }
     })

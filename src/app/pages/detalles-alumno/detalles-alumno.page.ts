@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { AsmsServiceService } from 'src/app/services/asms-service.service';
 
 @Component({
   selector: 'app-detalles-alumno',
@@ -8,14 +9,18 @@ import { ModalController } from '@ionic/angular';
 })
 export class DetallesAlumnoPage implements OnInit {
 
+  detalles: any[] = [];
   @Input() foto: string = '';
   @Input() nombre: string = '';
   @Input() cui: string = '';
   @Input() seccion: string = '';
 
-  constructor( private modalCtrl: ModalController) { }
+  constructor( private modalCtrl: ModalController, private asmsSrvc: AsmsServiceService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    (await this.asmsSrvc.getDetallesAlumno(this.cui)).subscribe( (detalles: any) => {
+      this.detalles = detalles;
+    })
   }
 
   cerrar() {

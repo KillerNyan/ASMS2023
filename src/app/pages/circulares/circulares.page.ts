@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AsmsServiceService } from 'src/app/services/asms-service.service';
 import { CircularPage } from '../circular/circular.page';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-circulares',
@@ -10,37 +11,41 @@ import { CircularPage } from '../circular/circular.page';
 })
 export class CircularesPage implements OnInit {
 
+  datosUsuario: any;
+  codigoMaestro: string = '';
+  page: number = 0;
   circulares: any[] = [];
 
-  constructor( private asmsSrvc: AsmsServiceService, private modalCtrl: ModalController ) { }
+  constructor( private asmsSrvc: AsmsServiceService, private strg: Storage, private modalCtrl: ModalController ) { }
 
   async ngOnInit() {
-    (await this.asmsSrvc.getCirculares()).subscribe( (circulares: any) => {
+    this.datosUsuario = await this.strg.get('datos');
+    this.codigoMaestro = this.datosUsuario.tipo_codigo;
+    (await this.asmsSrvc.getCirculares(this.codigoMaestro, this.page)).subscribe( (circulares: any) => {
       this.circulares = circulares;
+      console.log(circulares);
     })
   }
 
   async abrirCircular(pos: any) {
-    const tit = this.circulares[pos].titulo;
-    const fec = this.circulares[pos].fecha_publicacion;
-    const hor = this.circulares[pos].hora_publicacion;
-    const desc = this.circulares[pos].descripcion;
-    const down = this.circulares[pos].descarga;
-    const link = this.circulares[pos].link;
-    const aut = this.circulares[pos].requiere_autorizacion;
+    const codigo = this.circulares[pos].codigo;
     const circular = await this.modalCtrl.create({
       component: CircularPage,
       componentProps: {
-        titulo: tit,
-        fecha: fec,
-        hora: hor,
-        descripcion: desc,
-        descarga: down,
-        link: link,
-        autorizacion: aut
+        codigo,
       }
     })
     await circular.present();
+  }
+
+  async onIonInfinite(ev: any) {
+    this.page = this.page + 1;
+    (await this.asmsSrvc.getCirculares(this.codigoMaestro, this.page)).subscribe((circulares: any) => {
+      if (Object.prototype.toString.call(circulares) === '[object Array]') {
+        this.circulares.push(...circulares);
+      }
+      (ev).target.complete();
+    });
   }
 
   cerrar() {

@@ -16,7 +16,7 @@
 
     <swiper-container>
       <swiper-slide *ngFor="let photos of album.imagenes; let a = index" >
-        <img src="{{ photos.foto }}">
+        <img src="{{ photos.foto }}" class="img">
       </swiper-slide>
     </swiper-container>
     <p> {{ album.texto }} </p>

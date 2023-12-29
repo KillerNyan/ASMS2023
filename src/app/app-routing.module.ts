@@ -95,7 +95,8 @@ const routes: Routes = [
   {
     path: 'cali-alumnos',
     loadChildren: () => import('./pages/cali-alumnos/cali-alumnos.module').then( m => m.CaliAlumnosPageModule)
-  },  {
+  },
+  {
     path: 'post-sec',
     loadChildren: () => import('./pages/post-sec/post-sec.module').then( m => m.PostSecPageModule)
   },
@@ -110,6 +111,26 @@ const routes: Routes = [
   {
     path: 'detalles-alumno',
     loadChildren: () => import('./pages/detalles-alumno/detalles-alumno.module').then( m => m.DetallesAlumnoPageModule)
+  },
+  {
+    path: 'detalles-tareas',
+    loadChildren: () => import('./pages/detalles-tareas/detalles-tareas.module').then( m => m.DetallesTareasPageModule)
+  },
+  {
+    path: 'alumnos-postit',
+    loadChildren: () => import('./pages/alumnos-postit/alumnos-postit.module').then( m => m.AlumnosPostitPageModule)
+  },
+  {
+    path: 'postit-por-alumno',
+    loadChildren: () => import('./pages/postit-por-alumno/postit-por-alumno.module').then( m => m.PostitPorAlumnoPageModule)
+  },
+  {
+    path: 'detalles-postit-alumno',
+    loadChildren: () => import('./pages/detalles-postit-alumno/detalles-postit-alumno.module').then( m => m.DetallesPostitAlumnoPageModule)
+  },
+  {
+    path: 'ver-imagenes',
+    loadChildren: () => import('./pages/ver-imagenes/ver-imagenes.module').then( m => m.VerImagenesPageModule)
   },
 
 

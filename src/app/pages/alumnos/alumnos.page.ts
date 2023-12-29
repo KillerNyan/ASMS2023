@@ -46,11 +46,11 @@ export class AlumnosPage implements OnInit {
     await pagina.present();
   }
 
-  InfiniteScroll(a: any){
+  /* InfiniteScroll(a: any){
     setTimeout(() => {
-      (a as InfiniteScrollCustomEvent).target.complete();
-    }, 500);
-  }
+      a.target.complete();
+    }, 1500);
+  } */
 
   cerrar() {
     this.modalCtrl.dismiss();

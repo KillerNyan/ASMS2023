@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: CircularesPage
+  },
+  {
+    path: 'detalles-circular-padres',
+    loadChildren: () => import('./detalles-circular-padres/detalles-circular-padres.module').then( m => m.DetallesCircularPadresPageModule)
   }
 ];
 

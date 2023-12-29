@@ -13,34 +13,38 @@
 <ion-content class="ion-padding">
 
   <div class="ion-padding">
-    <ion-label>Titulo del Post It:</ion-label>
+    <ion-label color="primary"><b>Titulo del Post It:</b></ion-label>
   </div>
   <div class="ion-padding">
-    <ion-label color="medium">{{ titulo }}</ion-label>
+    <ion-input color="dark" placeholder="{{ titulo }}" [disabled]="disabled"></ion-input>
   </div>
   <div class="ion-padding">
-    <ion-label>Descripcion del Post It:</ion-label>
+    <ion-label color="primary"><b>Descripcion del Post It:</b></ion-label>
   </div>
   <div class="ion-padding">
-    <ion-label color="medium">{{ descripcion }}</ion-label>
+    <ion-textarea color="dark" placeholder="{{ descripcion }}" [disabled]="disabled"></ion-textarea>
   </div>
   <div class="ion-padding">
-    <ion-label>Fecha del Post It:</ion-label>
+    <ion-label color="primary"><b>Fecha del Post It:</b></ion-label>
   </div>
   <div class="ion-padding">
     <ion-label color="medium">{{ fecha }}</ion-label>
   </div>
   <div class="ion-padding">
-    <ion-label>Alumno:</ion-label>
+    <ion-label color="primary"><b>Alumno:</b></ion-label>
   </div>
   <div class="ion-padding">
     <ion-label color="medium">{{ alumno }}</ion-label>
   </div>
 
+  <ion-button (click)="adjuntarArchivos()" expand="block" shape="round" color="medium" class="ion-padding" [disabled]="disabled">
+    ADJUNTAR ARCHIVOS
+  </ion-button>
+
   <div class="ion-padding">
     <swiper-container>
       <swiper-slide *ngFor="let imagen of imagenes">
-        <img src="{{ imagen.imagen_url }}">
+        <img src="{{ imagen.imagen_url }}" (click)="verImg(imagen.imagen_url)">
       </swiper-slide>
       <swiper-slide *ngFor="let archivo of archivos">
         <a href="{{ archivo.archivo_url }}" target="_blank">
@@ -51,3 +55,11 @@
   </div>
 
 </ion-content>
+
+<ion-footer>
+
+  <ion-button (click)="adjuntarArchivos()" expand="block" shape="round" color="primary" class="ion-padding" [disabled]="disabled">
+    MODIFICAR
+  </ion-button>
+  
+</ion-footer>

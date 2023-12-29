@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
+import { AsmsServiceService } from 'src/app/services/asms-service.service';
 
 @Component({
   selector: 'app-circular',
@@ -8,29 +10,23 @@ import { ModalController } from '@ionic/angular';
 })
 export class CircularPage implements OnInit {
 
-  @Input() titulo: string = '';
-  @Input() fecha: string = '';
-  @Input() hora: string = '';
-  @Input() descripcion: string = '';
-  @Input() descarga: string = '';
-  @Input() link: string = '';
-  @Input() autorizacion: string = '';
+  datosUsuario: any;
+  circular: any[] = [];
+  @Input() codigo: string = '';
 
-  constructor( private modalCtrl: ModalController ) { }
+  constructor( private modalCtrl: ModalController, private strg: Storage, private asmsSrvc: AsmsServiceService ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.datosUsuario = await this.strg.get('datos');
+    console.log(this.datosUsuario);
+    (await this.asmsSrvc.getCircular(this.codigo)).subscribe((circular: any) => {
+      this.circular = circular;
+      console.log(circular);
+    })
   }
 
   cerrar() {
     this.modalCtrl.dismiss();
-  }
-
-  ver() {
-
-  }
-
-  descargar() {
-
   }
 
 }

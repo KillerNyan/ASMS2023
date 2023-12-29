@@ -10,12 +10,30 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
+
+  <ion-item *ngFor="let circular of circulares; let i = index">
+    <ion-col size="2">
+      <ion-avatar item-start>
+        <img src="{{circular.url_logo}}" style="width: 80%;">
+      </ion-avatar>
+    </ion-col>
+    <label (click)="abrirCircular(i)">
+      <p style="margin-bottom: -9px;"> {{circular.fecha_publicacion}} </p>
+      <p style="margin-bottom: -9px;"> {{circular.titulo}} </p>
+      <p> {{circular.descripcion}} </p>
+    </label>
+    <ion-icon name="arrow-forward" slot="end"></ion-icon>
+</ion-item>
+
+<ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+<ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando..."></ion-infinite-scroll-content>
+</ion-infinite-scroll>
   
-  <ion-card *ngFor="let circular of circulares; let i = index" (click)="abrirCircular(i)">
+  <!-- <ion-card *ngFor="let circular of circulares; let i = index" (click)="abrirCircular(i)">
     <ion-card-title class="ion-padding-horizontal"> {{ circular.fecha_publicacion }} {{ circular.hora_publicacion }} </ion-card-title>
     <ion-card-subtitle class="ion-padding-horizontal"> {{ circular.titulo }} </ion-card-subtitle>
     <ion-card-subtitle class="ion-padding-horizontal"> {{ circular.descripcion }} </ion-card-subtitle>
-  </ion-card>  
+  </ion-card>  --> 
 
 </ion-content>

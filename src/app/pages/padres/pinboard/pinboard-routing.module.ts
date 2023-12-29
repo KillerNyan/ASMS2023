@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: PinboardPage
+  },
+  {
+    path: 'detalles-postit-padres',
+    loadChildren: () => import('./detalles-postit-padres/detalles-postit-padres.module').then( m => m.DetallesPostitPadresPageModule)
   }
 ];
 

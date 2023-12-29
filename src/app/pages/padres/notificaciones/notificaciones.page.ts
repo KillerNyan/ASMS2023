@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
+import { AsmsServiceService } from 'src/app/services/asms-service.service';
 
 @Component({
   selector: 'app-notificaciones',
@@ -7,40 +10,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificacionesPage implements OnInit {
 
-  notificaciones: any[] = [
-    { 
-      url_logo: '../../../assets/img/notificacion.jpg',
-      clase: 'clase1',
-      created_at: '2023-09-06',
-      message: 'Notificación 1',
-      categoria: 'Categoria 1'
-    },
-    { 
-      url_logo: '../../../assets/img/notificacion.jpg',
-      clase: 'clase2',
-      created_at: '2023-09-05',
-      message: 'Notificación 2',
-      categoria: 'Categoria 2'
-    },
-    { 
-      url_logo: '../../../assets/img/notificacion.jpg',
-      clase: 'clase3',
-      created_at: '2023-09-04',
-      message: 'Notificación 3',
-      categoria: 'Categoria 3'
-    },
-    { 
-      url_logo: '../../../assets/img/notificacion.jpg',
-      clase: 'clase4',
-      created_at: '2023-09-03',
-      message: 'Notificación 4',
-      categoria: 'Categoria 4'
+  notificaciones: any[] = [];
+  hijos: any[] = [];
+  datosUsuario: any;
+  codigo: any = '';
+  tipoUsu: any = '';
+  tipo: string = '';
+  alumno: string = '';
+  page: string = '';
+  tipoNotificacion: string = '';
+
+  constructor( private asmsSrvc: AsmsServiceService, private modalCtrl: ModalController, private strg: Storage) { }
+
+  async ngOnInit() {
+    this.datosUsuario = await this.strg.get('datos');
+    this.codigo = this.datosUsuario.tipo_codigo;
+    this.tipoUsu = this.datosUsuario.tipo_usuario;
+    console.log(this.datosUsuario);
+    (await this.asmsSrvc.getNotificaciones(this.codigo, this.tipo, this.alumno, this.page)).subscribe((notificaciones: any) => {
+      this.notificaciones = notificaciones;
+      console.log(notificaciones);
+    });
+    (await this.asmsSrvc.getHijos(this.tipoUsu, this.codigo)).subscribe((hijos: any) => {
+      this.hijos = hijos;
+    })
+  }
+
+  async verNotificaciones(pos: any){
+    /* if (this.notificaciones[pos].type == '1'){
+      tipo = 
     }
-  ];
-
-  constructor() { }
-
-  ngOnInit() {
+    const pagina = await this.modalCtrl.create({
+      component:
+    }) */
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
+import { AsmsServiceService } from 'src/app/services/asms-service.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,15 +11,18 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class TabPage implements OnInit {
 
-  componentes: any[] = [];
+  imagenes: any;
+  logo: string = '';
   
-  constructor(private storage: Storage, private userSrvc: UserService, private navCtrl: NavController) {}
+  constructor(private storage: Storage, private asmsSrvc: AsmsServiceService, private navCtrl: NavController) {}
 
   @Input() titulo: string = '';
+  mostrarHome: boolean = true
 
   async ngOnInit() {
-    (await this.userSrvc.getMenuOpts()).subscribe( (componentes: any) => {
-      this.componentes = componentes;
+    (await this.asmsSrvc.getImagenes()).subscribe((imagenes: any) => {
+      this.imagenes = imagenes;
+      this.logo = imagenes.data.logo;
     })
   }
 
@@ -29,8 +33,40 @@ export class TabPage implements OnInit {
     this.storage.clear();
   }
 
+  ocultarHome() {
+    this.mostrarHome = false
+  }
+
   navegar(ruta: any) {
     this.navCtrl.navigateRoot(ruta);
+  }
+
+  verEncuestas(){
+    
+  }
+
+  verPagos(){
+
+  }
+
+  verVideoClases(){
+
+  }
+
+  verActividades(){
+
+  }
+
+  verNotas(){
+
+  }
+
+  verReportes(){
+
+  }
+  
+  verSoporte(){
+
   }
 
 }

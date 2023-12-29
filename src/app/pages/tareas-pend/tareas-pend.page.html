@@ -13,12 +13,12 @@
 <ion-content>
 
   <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle> {{ materiaDesc }} </ion-card-subtitle>
-    </ion-card-header>
+    <ion-card-content>
+      <ion-card-title> {{ materiaDesc }} </ion-card-title>
+    </ion-card-content>
   </ion-card>
 
-  <ion-card *ngFor="let tarea of tareas">
+  <ion-card *ngFor="let tarea of tareas; let i = index" (click)="verDetalleTarea(i)">
     <ion-card-content>
       <ion-card-subtitle> {{ tarea.descripcion }} </ion-card-subtitle>
     </ion-card-content>

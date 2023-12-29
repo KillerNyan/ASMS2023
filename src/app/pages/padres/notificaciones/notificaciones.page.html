@@ -6,13 +6,13 @@
 
 <ion-content>
   
-  <ion-item *ngFor="let notificacion of notificaciones">
+  <ion-item *ngFor="let notificacion of notificaciones; let i = index">
     <ion-col size="2">
       <ion-avatar item-start>
         <img src="{{notificacion.url_logo}}">
       </ion-avatar>
     </ion-col>
-    <label class="{{notificacion.clase}}">
+    <label class="{{notificacion.clase}}" (click)="verNotificaciones(i)">
       <p style="margin-bottom: -9px;"> {{notificacion.created_at}} </p>
       <p style="margin-bottom: -9px;"> {{notificacion.message}} </p>
       <p> {{notificacion.categoria}} </p>
