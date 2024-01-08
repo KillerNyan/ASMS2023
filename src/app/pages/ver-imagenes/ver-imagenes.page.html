@@ -1,9 +1,25 @@
 <ion-content class="transparent-modal" [fullscreen]="true">
 
-  <swiper-container>
-    <swiper-slide>
+  <swiper-container *ngIf="photo">
+    <swiper-slide *ngFor="let img of photos[0]; let i = index">
       <div class="swiper-zoom-container">
-        <ion-img src="{{ img }}"></ion-img>
+          <ion-img src="{{ img.foto }}"></ion-img>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+  
+  <swiper-container *ngIf="imagen">
+    <swiper-slide *ngFor="let img of photos">
+      <div class="swiper-zoom-container">
+          <ion-img src="{{ img.imagen_url }}"></ion-img>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+
+  <swiper-container *ngIf="imagenP">
+    <swiper-slide *ngFor="let img of photos[0]">
+      <div class="swiper-zoom-container">
+          <ion-img src="{{ img.imagen_url }}"></ion-img>
       </div>
     </swiper-slide>
   </swiper-container>

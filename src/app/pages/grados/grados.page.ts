@@ -18,13 +18,21 @@ import { SoportePage } from '../soporte/soporte.page';
 })
 export class GradosPage implements OnInit {
 
+  datosUsuario: any;
   secciones: any[] = [];
+  imagenes: any[] = [];
+  logo: string = '';
 
   constructor( private asmsSrvc: AsmsServiceService, private modalCtrl: ModalController, private storage: Storage, private navCtrl: NavController ) { }
 
   async ngOnInit() {
+    this.datosUsuario = await this.storage.get('datos');
     (await this.asmsSrvc.getSecciones()).subscribe( (secciones: any) => {
       this.secciones = secciones;
+    });
+    (await this.asmsSrvc.getImagenes()).subscribe((imagenes: any) => {
+      this.imagenes = imagenes;
+      this.logo = imagenes.data.logo;
     })
   }
 
@@ -99,8 +107,14 @@ export class GradosPage implements OnInit {
   }
 
   async verSoporte() {
+    const nombre = this.datosUsuario.nombre;
+    const logo = this.logo;
     const pagina = await this.modalCtrl.create({
       component: SoportePage,
+      componentProps: {
+        nombre,
+        logo
+      }
     })
     await pagina.present();
   }

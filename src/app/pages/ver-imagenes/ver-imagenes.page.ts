@@ -12,11 +12,16 @@ register();
 })
 export class VerImagenesPage implements OnInit {
 
-  @Input() img: string = '';
+  @Input() photos: any[] = [];
+  @Input() photo: boolean = false;
+  @Input() imagen: boolean = false;
+  @Input() imagenP: boolean = false;
+  //@Input() img: string = '';
 
   constructor( private modalCtrl: ModalController) { }
 
   ngOnInit() {
+    console.log(this.photos);
   }
 
   cerrar() {

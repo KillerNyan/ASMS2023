@@ -131,7 +131,31 @@ const routes: Routes = [
   {
     path: 'ver-imagenes',
     loadChildren: () => import('./pages/ver-imagenes/ver-imagenes.module').then( m => m.VerImagenesPageModule)
+  },  {
+    path: 'pagos-hijos',
+    loadChildren: () => import('./pages/padres/pagos-hijos/pagos-hijos.module').then( m => m.PagosHijosPageModule)
   },
+  {
+    path: 'tareas-hijos',
+    loadChildren: () => import('./pages/padres/tareas-hijos/tareas-hijos.module').then( m => m.TareasHijosPageModule)
+  },
+  {
+    path: 'tab-hijos',
+    loadChildren: () => import('./pages/hijos/tab-hijos/tab-hijos.module').then( m => m.TabHijosPageModule)
+  },
+  {
+    path: 'multimedia-hijos',
+    loadChildren: () => import('./pages/hijos/multimedia-hijos/multimedia-hijos.module').then( m => m.MultimediaHijosPageModule)
+  },
+  {
+    path: 'circulares-hijos',
+    loadChildren: () => import('./pages/hijos/circulares-hijos/circulares-hijos.module').then( m => m.CircularesHijosPageModule)
+  },
+  {
+    path: 'actividades-hijos',
+    loadChildren: () => import('./pages/hijos/actividades-hijos/actividades-hijos.module').then( m => m.ActividadesHijosPageModule)
+  },
+
 
 
 

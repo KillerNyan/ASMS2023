@@ -12,12 +12,13 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { ComponentsModule } from './components/components.module';
+import { VideoPlayer } from '@ionic-native/video-player/ngx'
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot({backButtonText: 'atrás', mode: 'ios'}), AppRoutingModule,
   IonicStorageModule.forRoot(), HttpClientModule, FormsModule, ComponentsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Storage],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Storage, VideoPlayer],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

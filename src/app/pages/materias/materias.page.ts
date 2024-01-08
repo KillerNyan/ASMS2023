@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { AsmsServiceService } from 'src/app/services/asms-service.service';
 import { TareasPendPage } from '../tareas-pend/tareas-pend.page';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-materias',
@@ -10,40 +11,40 @@ import { TareasPendPage } from '../tareas-pend/tareas-pend.page';
 })
 export class MateriasPage implements OnInit {
 
+  datosUsuario: any;
+  tipoUsu: string = '';
+  codigoUsu: string = '';
   @Input() gradoDesc: string = '';
   @Input() nivel: string = '';
   @Input() grado: string = '';
   @Input() seccionDesc: string = '';
   @Input() seccion: string = '';
 
-  constructor( private modalCtrl: ModalController, private asmsSrvc: AsmsServiceService ) { }
+  constructor( private modalCtrl: ModalController, private strg: Storage, private asmsSrvc: AsmsServiceService ) { }
 
   materias: any[] = [];
 
   async ngOnInit() {
-    (await this.asmsSrvc.getMaterias(this.nivel, this.grado)).subscribe((materias: any) => {
+    this.datosUsuario = await this.strg.get('datos');
+    this.tipoUsu = this.datosUsuario.tipo_usuario;
+    this.codigoUsu = this.datosUsuario.tipo_codigo;
+    (await this.asmsSrvc.getMaterias(this.tipoUsu, this.codigoUsu, this.nivel, this.grado)).subscribe((materias: any) => {
       this.materias = materias;
     })
   }
 
   async verTareas(pos: any) {
-    const gradDesc = this.gradoDesc;
-    const secDesc = this.seccionDesc;
-    const niv = this.nivel;
-    const grad = this.grado;
-    const sec = this.seccion;
-    const codMat = this.materias[pos].codigo;
-    const matDesc = this.materias[pos].descripcion;
+    const nivel = this.nivel;
+    const grado = this.grado;
+    const seccion = this.seccion;
+    const codigoMateria = this.materias[pos].mat_codigo;
     const circular = await this.modalCtrl.create({
       component: TareasPendPage,
       componentProps: {
-        gradoDesc: gradDesc,
-        nivel: niv,
-        grado: grad,
-        seccionDesc: secDesc,
-        seccion: sec,
-        codigoMateria: codMat,
-        materiaDesc: matDesc
+        nivel,
+        grado,
+        seccion,
+        codigoMateria,
       }
     })
     await circular.present();

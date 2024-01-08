@@ -15,6 +15,7 @@ register();
 export class DetallesPostitPadresPage implements OnInit {
 
   detallesPostit: any[] = [];
+  imagenes: any[] = [];
   @Input() codigoPostit: string = '';
   target: string = '';
 
@@ -24,15 +25,22 @@ export class DetallesPostitPadresPage implements OnInit {
     (await this.asmsSrvc.getDetallePostItPadres(this.codigoPostit)).subscribe((detalles: any) => {
       this.detallesPostit = detalles;
       this.target = this.detallesPostit[0].target
-      console.log(detalles);
     })
   }
 
-  async verImg(img: any) {
+  async verImg() {
+    const photo = false;
+    const imagenP = true;
+    const imagen = false;
+    this.imagenes = [];
+    this.imagenes.push(this.detallesPostit[0].imagenes);
     const pagina = await this.modalCtrl.create({
       component: VerImagenesPage,
       componentProps: {
-        img,
+        photos: this.imagenes,
+        photo,
+        imagen,
+        imagenP
       }
     })
     await pagina.present();

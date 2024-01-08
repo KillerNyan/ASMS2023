@@ -5,30 +5,48 @@
       <ion-icon slot="start" name="arrow-back-outline"></ion-icon>Atras
     </ion-button>
 
-    <ion-title> {{ materia }} </ion-title>
+    <ion-title> Tarea (Detalle) </ion-title>
 
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
 
-  <div class="ion-padding">
-    <ion-label color="primary"><b>Titulo de la Tarea:</b></ion-label>
-  </div>
-  <div class="ion-padding">
-    <ion-label>{{ titulo }}</ion-label>
-  </div>
-  <div class="ion-padding">
-    <ion-label color="primary"><b>Descripcion de la Tarea:</b></ion-label>
-  </div>
-  <div class="ion-padding">
-    <ion-label>{{ descripcion }}</ion-label>
-  </div>
-  <div class="ion-padding">
-    <ion-label color="primary"><b>Fecha de Entrega:</b></ion-label>
-  </div>
-  <div class="ion-padding">
-    <ion-label>{{ fecha }}</ion-label>
-  </div>
+  <ng-container *ngFor="let detalle of detalles">
+    <div class="ion-padding">
+      <ion-label color="primary"><b>Titulo de la Tarea:</b></ion-label>
+    </div>
+    <div class="ion-padding">
+      <ion-label>{{ detalle.titulo }}</ion-label>
+    </div>
+    <div class="ion-padding">
+      <ion-label color="primary"><b>Descripcion de la Tarea:</b></ion-label>
+    </div>
+    <div class="ion-padding">
+      <ion-label>{{ detalle.descripcion }}</ion-label>
+    </div>
+    <div class="ion-padding">
+      <ion-label color="primary"><b>Fecha de Entrega:</b></ion-label>
+    </div>
+    <div class="ion-padding">
+      <ion-label>{{ detalle.fecha_entrega }}</ion-label>
+    </div>
+
+    <ng-container *ngIf="link">
+      <div>
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="3"></ion-col>
+            <ion-col size="6">
+              <div class="ion-padding-top ion-padding-bottom ion-text-center">
+                <ion-icon slot="start" name="document-outline"></ion-icon> <a href="{{ detalle.link}}" target="_blank"><b>Informacion</b></a>
+              </div>
+            </ion-col>
+            <ion-col size="3"></ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ng-container>
+  </ng-container>
 
 </ion-content>

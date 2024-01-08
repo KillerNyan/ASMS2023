@@ -10,7 +10,6 @@ import { AsmsServiceService } from 'src/app/services/asms-service.service';
 export class AlumnosPostitPage implements OnInit {
 
   alumnos: any[] = [];
-  //seleccionados: any[] = [];
   distintivo: any[] = [];
   textoBuscar: string = '';
   conteo: number = 0;

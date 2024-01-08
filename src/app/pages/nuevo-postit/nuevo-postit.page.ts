@@ -3,6 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { AsmsServiceService } from 'src/app/services/asms-service.service';
 import { AlumnosPostitPage } from '../alumnos-postit/alumnos-postit.page';
 
+import { FilePicker } from '@robingenz/capacitor-file-picker';
+
 @Component({
   selector: 'app-nuevo-postit',
   templateUrl: './nuevo-postit.page.html',
@@ -49,8 +51,34 @@ export class NuevoPostitPage implements OnInit {
     console.log(data);
   }
 
-  adjuntarArchivos(){
+  //codDoc: any, subpos: any, group: number, pos: number
+  async pickFile(  ){
+    await FilePicker.pickFiles({
+      types: ['application/pdf', 'images/jpg', 'images/jpeg', 'images/png'],
+      multiple: true,
+      //readData: true,
+    }).then(async (file) => {
+      //console.log(file);
+      const fileBase64 = file.files[0].data;
+      const mimeType = 'data:' + file.files[0].mimeType + ';base64;';
+      const docName = file.files[0].name;
+      //const docFile = this.dataURLtoFile(mimeType+fileBase64, docName);
+    }).catch( err => {
+      console.log( err );
+      console.log('El usuario cancelo la accion de seleccionar un archivo.');
+    });
+  }
 
+  dataURLtoFile(dataurl: any, filename: any) {
+    let arr = dataurl.split(',');
+    let mime = arr[0].match(/:(.*?);/)[1];
+    let bstr = atob(arr[1]);
+    let n = bstr.length;
+    let u8arr = new Uint8Array(n);
+    while (n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, {type: mime});
   }
 
   enviar(){

@@ -6,13 +6,13 @@
 
 <ion-content>
 
-  <ion-item *ngFor="let circular of circulares; let i = index">
+  <ion-item *ngFor="let circular of circulares; let i = index" (click)="verCircular(i)">
       <ion-col size="2">
         <ion-avatar item-start>
           <img src="{{circular.url_logo}}" style="width: 80%;">
         </ion-avatar>
       </ion-col>
-      <label class="{{circular.clase}}" (click)="verCircular(i)">
+      <label class="{{circular.clase}}">
         <p style="margin-bottom: -9px;"> {{circular.fecha_publicacion}} </p>
         <p style="margin-bottom: -9px;"> {{circular.titulo}} </p>
         <p> {{circular.descripcion}} </p>

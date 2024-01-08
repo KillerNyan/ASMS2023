@@ -38,11 +38,15 @@ export class DetallePostitPage implements OnInit {
 
   }
 
-  async verImg(img: any) {
+  async verImg() {
+    const photo = false;
+    const imagen = true;
     const verImagen = await this.modalCtrl.create({
       component: VerImagenesPage,
       componentProps: {
-        img
+        photos: this.imagenes,
+        photo,
+        imagen
       },
       cssClass: 'transparent-modal'
     });

@@ -6,14 +6,14 @@
 
 <ion-content>
 
-  <ion-card class="multimediaEdit">
-    <img src="../../../assets/img/photoAlbum.jpeg" class="multimediaCards">
+  <ion-card class="multimediaEdit" (click)="verPhotoAlbums()">
+    <img src="{{ photoAlbum }}" class="multimediaCards">
     <h3 style="margin-top: -45px;
     margin-left: 60px; color: white;"><b>Photo Album</b></h3>
   </ion-card>
 
-  <ion-card class="multimediaEdit">
-    <img src="../../../assets/img/Videos.jpeg" class="multimediaCards">
+  <ion-card class="multimediaEdit" (click)="verVideos()">
+    <img src="{{ video }}" class="multimediaCards">
     <h3 style="margin-top: -45px;
     margin-left: 95px; color: white;"><b>Videos</b></h3>
   </ion-card>

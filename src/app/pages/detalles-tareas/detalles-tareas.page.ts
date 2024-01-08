@@ -10,21 +10,18 @@ import { AsmsServiceService } from 'src/app/services/asms-service.service';
 export class DetallesTareasPage implements OnInit {
 
   detalles: any[] = [];
-  @Input() titulo: string = '';
-  @Input() materia: string = '';
-  @Input() fecha: string = '';
-  @Input() descripcion: string = '';
   @Input() codigo: string = '';
-  @Input() alumno: string = '';
-  @Input() situacion: number = 1;
+  link: boolean = true;
 
   constructor( private modalCtrl: ModalController, private asmsSrvc: AsmsServiceService ) { }
 
   async ngOnInit() {
-    /* (await this.asmsSrvc.getDetallesTareas(this.codigo, this.alumno, this.situacion)).subscribe((detalles: any) => {
+    (await this.asmsSrvc.getDetallesTareas(this.codigo)).subscribe((detalles: any) => {
       this.detalles = detalles;
-      console.log(detalles);
-    }) */
+      if (detalles[0].link === ''){
+        this.link = false;
+      }
+    })
   }
 
   cerrar() {

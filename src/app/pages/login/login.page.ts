@@ -64,7 +64,7 @@ export class LoginPage implements OnInit {
       } else if (this.datosUsuario.tipo_usuario == '3') {
         this.navCtrl.navigateRoot('/tab');
       } else {
-        this.navCtrl.navigateRoot('/');
+        this.navCtrl.navigateRoot('/tab-hijos');
       }
     } else {
       this.loadingController.dismiss();

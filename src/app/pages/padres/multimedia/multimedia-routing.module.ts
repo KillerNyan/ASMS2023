@@ -7,6 +7,14 @@ const routes: Routes = [
   {
     path: '',
     component: MultimediaPage
+  },
+  {
+    path: 'photo-album-padres',
+    loadChildren: () => import('./photo-album-padres/photo-album-padres.module').then( m => m.PhotoAlbumPadresPageModule)
+  },
+  {
+    path: 'videos-padre',
+    loadChildren: () => import('./videos-padre/videos-padre.module').then( m => m.VideosPadrePageModule)
   }
 ];
 

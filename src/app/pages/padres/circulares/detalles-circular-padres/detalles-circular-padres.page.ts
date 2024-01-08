@@ -20,7 +20,6 @@ export class DetallesCircularPadresPage implements OnInit {
 
   async ngOnInit() {
     this.datosUsuario = await this.strg.get('datos');
-    console.log(this.datosUsuario);
     this.codigoPadre = this.datosUsuario.tipo_codigo;
     (await this.asmsSrvc.getDetalleCircularPadre(this.codigo, this.codigoPadre)).subscribe((circulares: any) => {
       this.circulares = circulares;

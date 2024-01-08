@@ -1,8 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage-angular';
 import { AsmsServiceService } from 'src/app/services/asms-service.service';
 import { UserService } from 'src/app/services/user.service';
+import { PagosHijosPage } from '../pagos-hijos/pagos-hijos.page';
+import { TareasHijosPage } from '../tareas-hijos/tareas-hijos.page';
+import { SoportePage } from '../../soporte/soporte.page';
 
 @Component({
   selector: 'app-tab',
@@ -11,15 +14,20 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class TabPage implements OnInit {
 
+  datosUsuario: any;
+  foto: string = '';
   imagenes: any;
   logo: string = '';
   
-  constructor(private storage: Storage, private asmsSrvc: AsmsServiceService, private navCtrl: NavController) {}
+  constructor(private storage: Storage, private modalCtrl: ModalController, private asmsSrvc: AsmsServiceService, private navCtrl: NavController) {}
 
   @Input() titulo: string = '';
   mostrarHome: boolean = true
 
   async ngOnInit() {
+    this.datosUsuario = await this.storage.get('datos');
+    this.foto = this.datosUsuario.url_foto;
+    console.log(this.datosUsuario);
     (await this.asmsSrvc.getImagenes()).subscribe((imagenes: any) => {
       this.imagenes = imagenes;
       this.logo = imagenes.data.logo;
@@ -45,16 +53,22 @@ export class TabPage implements OnInit {
     
   }
 
-  verPagos(){
-
+  async verPagos(){
+    const pagina = await this.modalCtrl.create({
+      component: PagosHijosPage,
+    });
+    await pagina.present();
   }
 
   verVideoClases(){
 
   }
 
-  verActividades(){
-
+  async verActividades(){
+    const pagina = await this.modalCtrl.create({
+      component: TareasHijosPage,
+    });
+    await pagina.present();
   }
 
   verNotas(){
@@ -65,8 +79,17 @@ export class TabPage implements OnInit {
 
   }
   
-  verSoporte(){
-
+  async verSoporte(){
+    const nombre = this.datosUsuario.nombre;
+    const logo = this.logo
+    const pagina = await this.modalCtrl.create({
+      component: SoportePage,
+      componentProps: {
+        nombre,
+        logo
+      }
+    });
+    await pagina.present();
   }
 
 }
